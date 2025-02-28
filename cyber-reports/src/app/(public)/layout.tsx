@@ -1,5 +1,3 @@
-
-
 import type { Metadata } from "next";
 import "@/styles/globals.css";
 import Navbar from "@/components/navbar/navbar";
@@ -19,10 +17,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Navbar />
-        <div className="container min-h-screen">{children}</div>
+        <section className="relative">
+          {children}
+        </section>
         <Footer />
       </body>
     </html>
   );
 }
-
