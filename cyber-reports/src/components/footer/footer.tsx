@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className=" bg-footer-bg dark:bg-gray-900">
+    <footer className=" bg-footer-bg dark:bg-slate-900">
       <div className=" flex justify-center items-center mb-4">
         <Image className="mt-5" src="/CyberReportsWhite.png" alt="logo" width={288} height={288} />
       </div>
@@ -147,7 +147,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="px-4 py-6 bg-footer-bg dark:bg-gray-700 text-center ">
+        <div className="px-4 py-6 bg-footer-bg  text-center ">
           <hr className="h-px my-8 bg-gray-500 border-0 dark:bg-gray-700" />
           <div className="flex mt-4 space-x-6 justify-center md:mt-0 ml-4">
             <a
