@@ -1,4 +1,6 @@
 // import home_banner from "@/assets/home_banner.png";
+import { Intro } from "@/components/intro/intro";
+import { Specialists } from "@/components/specialists/specialists";
 import Image from "next/image";
 
 function Home() {
@@ -10,136 +12,15 @@ function Home() {
         className="absolute top-0 z-[-2] h-screen w-full bg-cover filter brightness-70 blur-5"
         fill
       />
-      <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-[-1]"></div>
-      <div className="container mx-auto ">
-        <div className="content flex flex-1 items-center ml-10">
-          {/* Intro */}
-          {/* <div className="max-w-lg p-6 bg-transparent">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-bluelite dark:text-white text-justify">
-              Denuncie<span className="text-white text-justify">,</span> Proteja
-              <span className="text-white text-justify">,</span> Previna
-              <span className="text-white text-justify">
-                : Juntos Contra
-              </span>{" "}
-              Ciberataques
-              <span className="text-white text-justify">!</span>
-            </h5>
-
-            <p className="mb-3 font-normal text-white dark:text-gray-400 text-justify">
-              A nossa equipa está empenhada em ajudar o utilizador a resolver
-              todos os problemas decorrentes de mensagens, emails, chamadas
-              telefónicas e até mesmo tentativas de ataques cibernéticos e vírus
-              no seu dispositivo.
-            </p>
-            <a
-              href="/explore"
-              className="inline-flex items-center px-3 py-2 mr-2 text-sm font-medium text-center text-white bg-bluelite rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Explorar
-              <svg
-                className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-            <a
-              href="/signup"
-              className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-bluelite bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-bluelite dark:focus:ring-blue-800"
-            >
-              Criar conta
-              <svg
-                className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 14 10"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M1 5h12m0 0L9 1m4 4L9 9"
-                />
-              </svg>
-            </a>
-          </div> */}
-
-          {/* {session && (
-              <div className="max-w-lg p-6 bg-transparent">
-                <a href="#">
-                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-bluelite dark:text-white text-justify">
-                    Denuncie{" "}
-                    <span className="text-white text-justify">
-                      aqui os seus problemas
-                    </span>{" "}
-                    de Cibersegurança
-                    <span className="text-white text-justify">!</span>
-                  </h5>
-                </a>
-                <p className="mb-3 font-normal text-white dark:text-gray-400 text-justify">
-                  A nossa equipa está empenhada em ajudar o utilizador a
-                  resolver todos os problemas decorrentes de mensagens, emails,
-                  chamadas telefónicas e até mesmo tentativas de ataques
-                  cibernéticos e vírus no seu dispositivo.
-                </p>
-                <a
-                  href="/explore"
-                  className="inline-flex items-center px-3 py-2 mr-2 text-sm font-medium text-center text-white bg-bluelite rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Explorar
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  onClick={handleLogOut}
-                  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-bluelite bg-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-lite dark:focus:ring-blue-800"
-                >
-                  Logout
-                  <svg
-                    className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 10"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M1 5h12m0 0L9 1m4 4L9 9"
-                    />
-                  </svg>
-                </a>
-              </div>
-            )} */}
-        </div>
-      </div>
+      <section className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-[-1]"></section>
+      <section className="container  flex items-center min-h-screen max-h-full w-full">
+        <section className="flex ml-[10%]">
+          <Intro />
+        </section>
+      </section>
+        <section className="relative flex bg-white">
+          <Specialists />
+        </section>
 
       {/* <div className="flex flex-wrap -mx-3 mb-5 mt-44">
         <div className="w-full max-w-full px-3 mb-6  mx-auto">
