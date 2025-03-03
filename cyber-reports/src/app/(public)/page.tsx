@@ -1,6 +1,8 @@
 // import home_banner from "@/assets/home_banner.png";
-import { Intro } from "@/components/intro/intro";
-import { Specialists } from "@/components/specialists/specialists";
+import { Banner } from "@/components/landing-page/banner/banner";
+import { Intro } from "@/components/landing-page/intro/intro";
+import { Specialists } from "@/components/landing-page/specialists/specialists";
+import { TopReports } from "@/components/landing-page/top-reports/top-reports";
 import Image from "next/image";
 
 function Home() {
@@ -10,7 +12,8 @@ function Home() {
         src="/World.jpg"
         alt="World Background"
         className="absolute top-0 z-[-2] h-screen w-full bg-cover filter brightness-70 blur-5"
-        fill
+        width={500}
+        height={500}
       />
       <section className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-[-1]"></section>
       <section className="container  flex items-center min-h-screen max-h-full w-full">
@@ -18,8 +21,10 @@ function Home() {
           <Intro />
         </section>
       </section>
-        <section className="relative flex bg-white">
+        <section className="relative flex flex-col overflow-hidden bg-white">
           <Specialists />
+          <TopReports />
+          <Banner />
         </section>
 
       {/* <div className="flex flex-wrap -mx-3 mb-5 mt-44">
