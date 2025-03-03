@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1e293b;
     --foreground: #ededed;
   }
 }
@@ -19,3 +19,13 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.custom-scrollbar::-webkit-scrollbar {
+  display: none; /* Esconde a barra de rolagem */
+}
+
+.custom-scrollbar {
+  -ms-overflow-style: none;  /* Para IE e Edge */
+  scrollbar-width: none;      /* Para Firefox */
+}
+
