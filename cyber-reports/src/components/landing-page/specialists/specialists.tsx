@@ -2,11 +2,7 @@
 import { Heart, ShieldUser } from "lucide-react";
 import { SpecialistCard } from "./card/specialist-card";
 import { motion } from "framer-motion";
-import SplitText from "@/react-bits/split-text";
-
-const handleAnimationComplete = () => {
-  console.log("All letters have animated!");
-};
+// import SplitText from "@/react-bits/split-text";
 
 export const Specialists = () => {
   const specialists = [
@@ -47,7 +43,8 @@ export const Specialists = () => {
 
   return (
     <section className="flex flex-col items-center w-full min-h-96 p-20  dark:bg-slate-800">
-      <SplitText
+      <h1 text-5xl text-slate-400 mb-6 font-semibold text-center>Specialists</h1>
+      {/* <SplitText
         text="Specialists"
         className="text-5xl text-slate-400 mb-6 font-semibold text-center"
         delay={150}
@@ -56,7 +53,7 @@ export const Specialists = () => {
         threshold={0.2}
         rootMargin="-50px"
         onLetterAnimationComplete={handleAnimationComplete}
-      />
+      /> */}
       <div className="relative overflow-hidden w-full ">
         {/* Efeito de desfoque nas bordas */}
         <div className="absolute inset-0 z-20 before:absolute  before:w-10 before:h-full before:bg-gradient-to-r before:from-slate-800 before:to-transparent after:absolute after:right-0 after:top-0 after:w-20 after:h-full after:bg-gradient-to-l after:from-slate-800 after:to-transparent "></div>
