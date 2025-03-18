@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
-  distDir: 'cyber-reports/.vercel/output',
+  distDir: 'out',
   eslint: {
     ignoreDuringBuilds: true,
   },
