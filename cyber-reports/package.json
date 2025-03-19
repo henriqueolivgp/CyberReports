@@ -12,12 +12,14 @@
     "pages:build": "npx @cloudflare/next-on-pages"
   },
   "dependencies": {
-    "@react-spring/web": "^9.7.5",
+    "@gsap/react": "^2.1.2",
     "framer-motion": "^12.4.7",
+    "gsap": "^3.12.7",
     "lucide-react": "^0.476.0",
     "next": "15.1.7",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "split-type": "^0.3.4"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.10",
