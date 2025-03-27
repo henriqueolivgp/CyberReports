@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="flex bg-transparent w-full p-4 items-center justify-between">
+      <nav className="relative flex bg-transparent w-full p-4 items-center justify-between">
         <section className="flex gap-8">
           <Logo />
           <section>{/* <SearchInput /> */}</section>
