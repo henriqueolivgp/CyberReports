@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ["i.ibb.co","source.unsplash.com"],
+    domains: ["i.ibb.co","source.unsplash.com", "t4.ftcdn.net"],
     remotePatterns: [
       {
         protocol: "https",
