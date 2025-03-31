@@ -17,7 +17,6 @@ export default function Navbar() {
         </section>
         <section className="hidden xl:flex">
           <ul className=" flex gap-16 font-semibold ">
-            <Li to="/reports" name="Reports" />
             <Li to="/explore" name="Explore" />
             <Li to="/about-us" name="About us" />
             {!isLoggedIn && (
