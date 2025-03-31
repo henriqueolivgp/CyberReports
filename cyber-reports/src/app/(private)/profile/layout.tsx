@@ -32,13 +32,6 @@ export default function RootLayout({
             svg={"editprofile"}
           />
           <ProfileLi
-            to="/profile/reports"
-            name="Reports"
-            activeTo={pathname}
-            activeLocal={pathname}
-            svg={"reports"}
-          />
-          <ProfileLi
             to="/profile/chat"
             name="Chat"
             activeTo={pathname}
