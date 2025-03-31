@@ -42,7 +42,7 @@ export const Specialists = () => {
   const loopedSpecialists = [...specialists, ...specialists];
 
   return (
-    <section className="flex flex-col items-center w-full min-h-96 p-20  dark:bg-slate-800">
+    <section className="flex flex-col items-center w-full min-h-96 p-14 pt-6  dark:bg-slate-800">
       {/* <h1 text-5xl text-slate-400 mb-6 font-semibold text-center>Specialists</h1> */}
       <SplitText
         text="Specialists"
