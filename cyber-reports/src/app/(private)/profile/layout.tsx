@@ -25,21 +25,21 @@ export default function RootLayout({
             svg={"profile"}
           />
           <ProfileLi
-            to="/profile/edit-profile"
+            to="/profile/1/edit-profile"
             name="Edit-Profile"
             activeTo={pathname}
             activeLocal={pathname}
             svg={"editprofile"}
           />
           <ProfileLi
-            to="/profile/chat"
+            to="/profile/1/chat"
             name="Chat"
             activeTo={pathname}
             activeLocal={pathname}
             svg={"chat"}
           />
           <ProfileLi
-            to="/profile/historic"
+            to="/profile/1/historic"
             name="Historic Reports"
             activeTo={pathname}
             activeLocal={pathname}
@@ -52,7 +52,7 @@ export default function RootLayout({
                                 <ProfileLi to="/profile/admin" name="Admin Control" activeTo={pathname} activeLocal={pathname} svg={'admin'} />
                             )} */}
           <ProfileLi
-            to="/profile/settings"
+            to="/profile/1/settings"
             name="Settings"
             activeTo={pathname}
             activeLocal={pathname}
