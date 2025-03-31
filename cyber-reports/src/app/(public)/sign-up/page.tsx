@@ -1,5 +1,5 @@
-
 "use client";
+import { OtherAccounts } from "@/components/auth/otherAccounts";
 import { ImgBack } from "@/components/ImgBack";
 import Link from "next/link";
 // import loading from "@/app/loading";
@@ -46,18 +46,18 @@ export default function SignUp() {
   return (
     <>
       <div className="w-full h-screen">
-      <ImgBack />
+        <ImgBack />
         <div className="absolute flex w-full h-screen justify-center items-center">
-          <div className=" xl:w-[584px;] xl:h-[661px]  flex justify-center max-w-xl bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+          <div className=" xl:w-auto xl:h-auto  flex justify-center max-w-xl bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
             <form className="space-y-6" action="#">
               <h1 className="text-xl text-center font-bold font-Epilogue text-gray-900 dark:text-white">
                 Create an account
               </h1>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-4">
                 <div className="flex flex-col">
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your email
                   </label>
@@ -73,7 +73,7 @@ export default function SignUp() {
                 <div className="flex flex-col">
                   <label
                     htmlFor="password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your password
                   </label>
@@ -89,7 +89,7 @@ export default function SignUp() {
                 <div className="flex flex-col">
                   <label
                     htmlFor="confirm_password"
-                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    className="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Confirm your password
                   </label>
@@ -126,6 +126,7 @@ export default function SignUp() {
                   <a href="#">Or sign in with</a>
                   <hr className=" w-36 h-[2px] my-4 bg-gray-300 border-0 dark:bg-gray-700" />
                 </div>
+                <OtherAccounts />
               </div>
             </form>
           </div>
