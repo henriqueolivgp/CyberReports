@@ -15,6 +15,11 @@ import path from "path";
 import * as dotenv from 'dotenv';
 dotenv.config();
 
+import { ConnectionDB } from "./db/connection"
+
+import multipart from '@fastify/multipart';
+import { userRoutes } from "./routes/user.route"
+
 // Charge swagger configuration of JSON file
 const swaggerConfigPath = path.join(__dirname, "../src/SwaggerConfig/swaggerConfig.json");
 let swaggerConfig;
@@ -27,7 +32,9 @@ try {
   process.exit(1);  // Output with error if doesn't possible charge the file
 }
 
-const app = fastify();
+const app = fastify({
+  logger: true
+});
 
 // Register fastifyCors and your configuration
 app.register(fastifyCors, {
@@ -38,6 +45,17 @@ app.register(fastifyCors, {
 
 // register fastifyCookie
 app.register(fastifyCookie)
+
+// Registro do plugin multipart
+app.register(multipart, {
+  // Optional configuration
+  limits: {
+    fieldSize: 1000000, // Max field value size in bytes
+    fields: 10,         // Max number of non-file fields
+    files: 1,          // Max number of file fields
+    fileSize: 1000000  // Max file size in bytes
+  }
+});
 
 // Register fastify-swagger plugin first
 app.register(fastifySwagger, {
@@ -61,9 +79,13 @@ app.register(fastifySwaggerUi, {
   },
 });
 
+ConnectionDB();
+
 // Main Get
 app.get('/', async (req, rep) => {
   return "Welcome to Cyber Repots API!!!"
 })
+
+app.register(userRoutes);
 
 export default app;
