@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { AuthService } from '../services/auth.service';
-import { UserValidationSchema } from '../validations/user.validation';
+import { RegisterValidationSchema } from '../validations/user.validation';
 
 export const UserController = {
   async registerUserController(req: FastifyRequest, rep: FastifyReply) {
@@ -40,7 +40,7 @@ export const UserController = {
       }
 
       // Validar os campos com Zod
-      const validatedData = UserValidationSchema.parse({
+      const validatedData = RegisterValidationSchema.parse({
         full_name,
         username,
         email,
