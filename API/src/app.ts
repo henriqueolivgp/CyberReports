@@ -18,7 +18,8 @@ dotenv.config();
 import { ConnectionDB } from "./db/connection"
 
 import multipart from '@fastify/multipart';
-import { userRoutes } from "./routes/user.route"
+import { userRoutes } from "./routes/auth.route"
+import { Routes } from "./routes/routes"
 
 // Charge swagger configuration of JSON file
 const swaggerConfigPath = path.join(__dirname, "../src/SwaggerConfig/swaggerConfig.json");
@@ -86,6 +87,6 @@ app.get('/', async (req, rep) => {
   return "Welcome to Cyber Repots API!!!"
 })
 
-app.register(userRoutes);
+app.register(Routes);
 
 export default app;
