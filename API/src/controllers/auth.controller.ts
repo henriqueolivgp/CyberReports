@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { AuthService } from '../services/auth.service';
 import { RegisterValidationSchema } from '../validations/user.validation';
+import { UserModel } from '../models/user.model';
 
 export const UserController = {
   async registerUserController(req: FastifyRequest, rep: FastifyReply) {
@@ -66,4 +67,18 @@ export const UserController = {
       rep.status(400).send({ error: error.message });
     }
   },
+
+  async LoginController() {
+    try {
+      const {  } = UserModel
+
+      const user = await AuthService.loginUser(
+
+      )
+
+      rep.status(200).send("User Loged in sucessfull")
+    } catch (error) {
+      throw new Error('Error in login ')
+    }
+  }
 };
