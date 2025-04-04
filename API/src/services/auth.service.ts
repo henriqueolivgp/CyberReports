@@ -49,7 +49,7 @@ export const AuthService = {
   },
 
   async loginUser(UserData: Login) {
-    const { id, email, password } = UserData;
+    const { email, password } = UserData;
 
     // search if this email exists with other account
     const user = await UserModel.findOne({ email });
