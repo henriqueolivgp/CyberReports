@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/user.model";
 import { uploadImageToR2 } from "../utils/uploadToR2";
+import { Login } from "../validations/user.validation";
+import jwt from "jsonwebtoken";
 
 export const AuthService = {
   async registerUser(
@@ -26,7 +28,7 @@ export const AuthService = {
       username,
       email,
       password: hashedPassword,
-      avatarUrl: '', // Corrigido para avatarUrl conforme o schema
+      avatarUrl: "", // Corrigido para avatarUrl conforme o schema
     });
 
     // Usar o ID do usuário para nomear o arquivo no R2
@@ -44,5 +46,28 @@ export const AuthService = {
     await newUser.save();
 
     return newUser;
+  },
+
+  async loginUser(UserData: Login) {
+    const { id, email, password } = UserData;
+
+    // search if this email exists with other account
+    const user = await UserModel.findOne({ email });
+
+    if (!user) {
+      throw new Error("This user aren't registered");
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw new Error("Incorrect Password");
+    }
+
+    const token = jwt.sign({}, "secretjwt", {
+      expiresIn: "1d",
+      subject: user.id,
+    });
+
+    return{user, token}
   },
 };
