@@ -2,11 +2,6 @@ import { Schema } from 'mongoose';
 
 const UserSchema = new Schema(
   {
-    id: {
-      type: Number,
-      require: true,
-      
-    },
     full_name: { type: String, required: true, trim: false },
     username: { type: String, required: true, trim: true },
     email: {
