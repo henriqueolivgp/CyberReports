@@ -1,6 +1,12 @@
 import { FastifyInstance } from "fastify";
-import { userRoutes } from "./auth.route";
+import { authRoutes } from "./auth.route";
+import { verifyAuth } from "../middlewares/auth.middleware";
+import { userRoutes } from "./user.routes";
 
-export async function Routes(fastify: FastifyInstance) {
-  fastify.register(userRoutes)
+export async function Routes(app: FastifyInstance) {
+  await authRoutes(app)
+  app.register(async (app) =>{
+    app.addHook("preHandler", verifyAuth);
+    app.register(userRoutes)
+  })
 }
