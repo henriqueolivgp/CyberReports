@@ -1,59 +1,37 @@
-import { FastifyReply, FastifyRequest } from 'fastify';
-import { AuthService } from '../services/auth.service';
-import { RegisterValidationSchema } from '../validations/user.validation';
-import { UserModel } from '../models/user.model';
+import { FastifyReply, FastifyRequest } from "fastify";
+import { AuthService } from "../services/auth.service";
+import {
+  LoginValidationSchema,
+  RegisterValidationSchema,
+  Register
+} from "../validations/user.validation";
+import { z } from "zod";
 
-export const UserController = {
+export const AuthController = {
   async registerUserController(req: FastifyRequest, rep: FastifyReply) {
     try {
-      // Obter os campos do formulário e o arquivo usando req.parts()
       const parts = req.parts();
-      let full_name: string | undefined;
-      let username: string | undefined;
-      let email: string | undefined;
-      let password: string | undefined;
+  
+      const fields: Record<string, string> = {};
       let fileBuffer: Buffer | undefined;
       let fileName: string | undefined;
-
-      // Iterar sobre as partes da requisição multipart
+  
       for await (const part of parts) {
         if (part.type === 'field') {
-          // Campos do formulário
-          switch (part.fieldname) {
-            case 'full_name':
-              full_name = part.value as string;
-              break;
-            case 'username':
-              username = part.value as string;
-              break;
-            case 'email':
-              email = part.value as string;
-              break;
-            case 'password':
-              password = part.value as string;
-              break;
-          }
+          fields[part.fieldname] = part.value as string;
         } else if (part.type === 'file') {
-          // Arquivo (avatar)
           fileBuffer = await part.toBuffer();
           fileName = part.filename;
         }
       }
-
+  
       // Validar os campos com Zod
-      const validatedData = RegisterValidationSchema.parse({
-        full_name,
-        username,
-        email,
-        password,
-      });
-
-      // Verificar se o arquivo foi enviado
+      const validatedData = RegisterValidationSchema.parse(fields);
+  
       if (!fileBuffer || !fileName) {
         throw new Error('Avatar é obrigatório');
       }
-
-      // Chamar o serviço de autenticação
+  
       const user = await AuthService.registerUser(
         validatedData.full_name,
         validatedData.username,
@@ -61,24 +39,42 @@ export const UserController = {
         validatedData.password,
         { buffer: fileBuffer, filename: fileName }
       );
-
+  
       rep.status(201).send({ message: 'Usuário registrado com sucesso', user });
     } catch (error: any) {
       rep.status(400).send({ error: error.message });
     }
   },
-
-  async LoginController() {
+  
+  async LoginController(req: FastifyRequest, rep: FastifyReply) {
     try {
-      const {  } = UserModel
+      // unpack the LoginValidationSchema
+      const { email, password } = LoginValidationSchema.parse(req.body);
 
-      const user = await AuthService.loginUser(
+      //
+      const { token } = await AuthService.loginUser({ email, password });
 
-      )
+      // Config cookie and
+      rep
+        .setCookie("token", token, {
+          path: "/",
+          httpOnly: true,
+          secure: process.env.NODE_ENV === "production", // HTTPS apenas em produção
+          sameSite: "strict",
+          maxAge: 24 * 60 * 60, // 1 dia (em segundos)
+        })
+        .status(200)
+        .send({ message: "Login bem-sucedido", token });
+    } catch (error: any) {
+      // console.error("Erro no login:", error); // Logar o erro para depuração
 
-      rep.status(200).send("User Loged in sucessfull")
-    } catch (error) {
-      throw new Error('Error in login ')
+      if (error instanceof z.ZodError) {
+        rep
+          .status(400)
+          .send({ error: "Dados de entrada inválidos", details: error.errors });
+      } else {
+        rep.status(400).send({ error: error.message || "Erro ao fazer login" });
+      }
     }
-  }
+  },
 };
