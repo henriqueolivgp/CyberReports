@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/user.model";
 import { uploadImageToR2 } from "../utils/uploadToR2";
-import { Login } from "../validations/user.validation";
+import { Login, LoginValidationSchema } from "../validations/user.validation";
 import jwt from "jsonwebtoken";
 
 export const AuthService = {
@@ -43,31 +43,38 @@ export const AuthService = {
     newUser.avatarUrl = avatarUrl;
     await newUser.save();
 
-    await newUser.save();
-
     return newUser;
   },
 
-  async loginUser(UserData: Login) {
-    const { email, password } = UserData;
+  async loginUser(input: Login) {
+    // validate data input login
+    const validatedInput = LoginValidationSchema.parse(input);
+    const { email, password } = validatedInput;
 
-    // search if this email exists with other account
+    // Search user by email
     const user = await UserModel.findOne({ email });
-
     if (!user) {
-      throw new Error("This user aren't registered");
+      throw new Error("This User hasn't been registred");
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    // Compare the inserted password with stored password
+    const isPasswordValid = await bcrypt.compare(password, user.password!);
     if (!isPasswordValid) {
-      throw new Error("Incorrect Password");
+      throw new Error("Senha incorreta");
     }
 
-    const token = jwt.sign({}, "secretjwt", {
-      expiresIn: "1d",
-      subject: user.id,
-    });
+    // Gerar um token JWT com um payload útil
+    const token = jwt.sign(
+      {}, // Payload Data
+      process.env.JWT_SECRET || "jwtToken",
+      {
+        expiresIn: "1d",
+        subject: user._id.toString(), // Definir o subject como o ID do usuário
+      }
+    );
 
-    return{user, token}
+    return {
+      token,
+    };
   },
 };
