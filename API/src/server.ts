@@ -14,6 +14,7 @@ const options: FastifyListenOptions = {
   // Other options...
 };
 
+// Starts the API server
 const start = async () => {
   try {
     app.listen(options, (err, address) => {
