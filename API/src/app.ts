@@ -13,7 +13,7 @@ import path from "path";
 
 // DotEnv configuration
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: './.env'});
 
 import { ConnectionDB } from "./db/connection"
 
@@ -39,15 +39,15 @@ const app = fastify({
 
 // Register fastifyCors and your configuration
 app.register(fastifyCors, {
-  origin: "http://localhost:3000", // URL do seu frontend
-  credentials: true, // Permitir envio de cookies
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Permite apenas esses métodos
+  origin: "http://localhost:3000", // My frontend URL
+  credentials: true, // Allow cookies to be sent
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow only this methods
 });
 
 // register fastifyCookie
 app.register(fastifyCookie)
 
-// Registro do plugin multipart
+// Register multipart plugin
 app.register(multipart, {
   // Optional configuration
   limits: {
@@ -80,6 +80,7 @@ app.register(fastifySwaggerUi, {
   },
 });
 
+// Connection into MongoDB 
 ConnectionDB();
 
 // Main Get
