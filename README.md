@@ -23,7 +23,6 @@
 - [Running the Project](#-running-the-project)
   - [Back-end](#back-end)
   - [Front-end Web](#front-end-web)
-- [Routes](-routes)
 - [License](#-license)
 - [Author](#-author)
 
