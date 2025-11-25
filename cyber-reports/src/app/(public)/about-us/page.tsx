@@ -33,7 +33,7 @@ export default function AboutUs() {
           </div>
           <div>
             <h1 className="text-2xl font-bold flex justify-center mt-16">
-              Developers:
+              Developer:
             </h1>
           </div>
           <div className="flex justify-center mt-12 mb-12 rounded space-x-5">

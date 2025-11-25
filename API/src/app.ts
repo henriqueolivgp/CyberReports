@@ -11,6 +11,7 @@ import fastifySwaggerUi from "@fastify/swagger-ui"
 import fs from "fs";
 import path from "path";
 
+
 // DotEnv configuration
 import * as dotenv from 'dotenv';
 dotenv.config({ path: './.env'});
@@ -21,8 +22,15 @@ import multipart from '@fastify/multipart';
 
 import { Routes } from "./routes/routes"
 
+import { fileURLToPath } from "url";
+import paths from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = paths.dirname(__filename);
+
+
 // Charge swagger configuration of JSON file
-const swaggerConfigPath = path.join(__dirname, "../src/SwaggerConfig/swaggerConfig.json");
+const swaggerConfigPath = paths.join(__dirname, "./SwaggerConfig/swaggerConfig.json");
 let swaggerConfig;
 
 try {
