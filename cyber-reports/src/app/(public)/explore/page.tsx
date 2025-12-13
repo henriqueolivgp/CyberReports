@@ -25,7 +25,6 @@ export default function Explore() {
             <Reports />
             <Reports />
             <Reports />
-            <Reports />
           </section>
         </section>
       </section>
