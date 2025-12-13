@@ -20,8 +20,7 @@ export default function Explore() {
           <section className="grid lg:grid-cols-4 md:grid-cols-3 xs:grid-cols-1  gap-y-8">
             <Reports />
             <Reports />
-            <Reports />
-            <Reports />
+            <Reports /> 
             <Reports />
             <Reports />
             <Reports />
