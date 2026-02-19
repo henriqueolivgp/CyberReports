@@ -132,6 +132,5 @@ This project is under the MIT license. See the [LICENSE](https://github.com/henr
 <div align="center">
 
 [![Linkedin Badge](<https://img.shields.io/badge/-LinkedIn(HenriqueOliveira)-1f6feb?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/henrique-oliveira-gp>)](https://www.linkedin.com/in/henrique-oliveira-gp)
-[![Linkedin Badge](<https://img.shields.io/badge/-LinkedIn(PedroFerreira)-1f6feb?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/henrique-oliveira-gp>)](https://www.linkedin.com/in/henrique-oliveira-gp)
 [![Gmail Badge](https://img.shields.io/badge/-HenriqueOliveira-1f6feb?style=flat-square&logo=Gmail&logoColor=white&link=mailto:henriqueoliveira.g.p)](mailto:henrique.b.oliveira@outlook.pt)
 </div>
